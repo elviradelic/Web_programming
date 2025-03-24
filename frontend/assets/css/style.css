@@ -1,0 +1,833 @@
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+body{line-height:1; font-family: arial;}
+h1{font-size: 25px;}h2{font-size: 21px;}h3{font-size: 18px;}h4{font-size: 16px;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+nav ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:none}
+a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent}
+ins{background-color:#ff9;color:#000;text-decoration:none}
+mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}
+del{text-decoration:line-through}
+abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}
+table{border-collapse:collapse;border-spacing:0}
+hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
+input,select{vertical-align:middle}
+
+/* Resetovanje stila */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* OSNOVNI STILOVI */
+html, body {
+    background-color: #FFF;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* HEADER */
+header {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 10px;
+}
+
+nav ul li a {
+    background: #EEE;
+    padding: 8px 15px;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #444;
+    border-radius: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    background: #DDD;
+}
+
+/* GLAVNI SADRŽAJ */
+#pageContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: none; /* Uklanja ograničenje */
+    margin: 0; /* Uklanja automatsko centriranje */
+}
+
+
+
+/* Main i Aside - Raspored */
+main {
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Sekcije u main */
+main section {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Omogućava da sekcije budu pune širine */
+section {
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Popravka širine kartica na services.html */
+#services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 0;
+    width: 100%;
+}
+
+#services .card {
+    width: 30%;
+    min-width: 280px;
+    max-width: 350px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+    background: white;
+    border-radius: 8px;
+    text-align: center;
+    padding: 20px;
+}
+
+/* GALERIJA */
+/* GALERIJA */
+#gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0;
+    width: 100%;
+}
+
+/* Centriranje naslova i opisa */
+#gallery .gallery-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#gallery .gallery-header h2 {
+    font-size: 30px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 8px;
+}
+/* Još manje razmaka između naslova i slike */
+#gallery .gallery-header {
+    text-align: center;
+    margin-top: 140px; /* Smanjeno sa 30px na 10px */
+    margin-bottom: -20px; /* Smanjeno sa 10px na 0px */
+}
+
+
+/* Kontejner za slike */
+#gallery .gallery-images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+
+/* Stilizacija slika */
+#gallery .gallery-images img {
+    width: 100%;
+    max-width: 280px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    
+}
+
+/* Precizan raspored slika */
+#gallery .gallery-images .gallery-1 {
+    justify-self: left;
+    align-self: flex-start;
+}
+
+#gallery .gallery-images .gallery-2 {
+    margin-top: 50px; /* Povećan razmak prema dole */
+    justify-self: center;
+    align-self: center;
+}
+
+#gallery .gallery-images .gallery-3 {
+    justify-self: right;
+    align-self: flex-start;
+}
+
+#gallery .gallery-images .gallery-4 {
+    justify-self: left;
+    align-self: flex-end;
+    margin-bottom: 130px;
+}
+
+#gallery .gallery-images .gallery-5 {
+    grid-column: 3 / span 1; /* Pomjerena skroz desno */
+    justify-self: right;
+    align-self: flex-end;
+    margin-bottom: 130px;
+}
+
+/* Efekat hovera */
+#gallery .gallery-images img:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsivne prilagodbe */
+@media screen and (max-width: 1000px) {
+    #gallery .gallery-images {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #gallery .gallery-images {
+        grid-template-columns: 1fr;
+    }
+
+    #gallery .gallery-images img {
+        width: 80%;
+        max-width: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* ABOUT */
+#about {
+    display: flex;
+    flex-direction: column; /* Postavlja elemente u kolonu */
+    align-items: center;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+
+#about .text {
+    width: 100%; /* Omogućava da naslov i paragraf zauzmu punu širinu */
+    max-width: 800px; /* Ograničava širinu za bolji izgled */
+    margin-bottom: 20px; /* Dodaje razmak između teksta i slike */
+}
+
+#about img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 0;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 30px; /* Dodaje prostor između slike i footera */
+}
+
+/* CONTACT */
+#contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+
+#contact form {
+    width: 100%;
+    max-width: 500px;
+}
+
+#contact input, #contact textarea {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+/* Poravnavanje labela na lijevu stranu */
+#contact form .mb-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Poravnava labele lijevo */
+}
+
+#contact form label {
+    text-align: left;
+    width: 100%; /* Osigurava da labele zauzmu punu širinu */
+    margin-bottom: 5px; /* Dodaje malo razmaka ispod labele */
+}
+#contact form button {
+    background: transparent; /* Transparentna pozadina */
+    border: 2px solid black; /* Crni obrub */
+    color: black; /* Crni tekst */
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Efekat hovera */
+#contact form button:hover {
+    background: black; /* Crna pozadina na hover */
+    color: white; /* Bijeli tekst na hover */
+}
+
+/* Stilizacija forme za registraciju */
+/* Centriranje i smanjenje širine forme */
+#register-form {
+    width: 100%;
+    max-width: 400px; /* Ograničava širinu forme */
+    margin: 0 auto; /* Centriranje forme */
+    text-align: left; /* Poravnanje teksta */
+}
+
+/* Stilizacija labela */
+#register-form label {
+    display: block;
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+/* Stilizacija input polja */
+#register-form input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* Dugme za registraciju - minimalistički stil */
+.register-btn {
+    display: block;
+    width: 100%;
+    max-width: 200px; /* Ograničena širina dugmeta */
+    margin: 20px auto; /* Centriranje i spuštanje */
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    background: transparent;
+    border: 2px solid black;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+}
+
+
+.register-btn:hover {
+    background: black;
+    color: white;
+}
+
+/* Stilizacija teksta ispod dugmeta */
+.register-text {
+    text-align: center;
+    display: block;
+    margin-top: 10px; /* Razmak između dugmeta i teksta */
+}
+
+/*LOGIN FORMA STILICZACIJA*/
+/* Stilizacija forme za login */
+#login-form {
+    width: 100%;
+    max-width: 400px; /* Ograničava širinu forme */
+    margin: 0 auto; /* Centriranje forme */
+    text-align: left; /* Poravnanje teksta */
+}
+
+/* Stilizacija labela */
+#login-form label {
+    display: block;
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+/* Stilizacija input polja */
+#login-form input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* Dugme za login - minimalistički stil */
+.login-btn {
+    display: block;
+    width: 100%;
+    max-width: 200px; /* Ograničena širina dugmeta */
+    margin: 20px auto; /* Centriranje i spuštanje */
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    background: transparent;
+    border: 2px solid black;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+}
+
+.login-btn:hover {
+    background: black;
+    color: white;
+}
+
+/* Stilizacija teksta ispod dugmeta */
+.login-text {
+    text-align: center;
+    display: block;
+    margin-top: 10px; /* Razmak između dugmeta i teksta */
+}
+
+/* Centriranje forme */
+.container {
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+}
+
+/* Smanjenje širine input polja */
+.form-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+/* Input polja centrirana */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Stilizacija minimalističkog dugmeta */
+.btn-save {
+    background: transparent;
+    border: 2px solid black;
+    color: black;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: block;
+    margin: 20px auto 0;
+    width: 100%;
+}
+
+/* Hover efekat */
+.btn-save:hover {
+    background: black;
+    color: white;
+}
+/*STILIZACIJA BUTTONA U SETTINGS PAGE*/
+/* Minimalistički stil za dugme Update Settings */
+.btn-settings {
+    background: transparent; /* Transparentna pozadina */
+    border: 2px solid black; /* Crni obrub */
+    color: black; /* Crni tekst */
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: block;
+    margin: 20px auto 0; /* Centriranje dugmeta */
+    width: fit-content;
+}
+
+/* Hover efekat */
+.btn-settings:hover {
+    background: black;
+    color: white;
+}
+
+/* CENTRIRANJE I PROŠIRENJE CREATE EVENT FORME */
+#create-event {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Održava sekciju u centru ekrana */
+    padding: 100px 20px; /* Povećan padding da se ne preklapa sa header/footer */
+    text-align: center;
+}
+
+/* Forma kontejner - proširen */
+#create-event .event-form {
+    width: 100%;
+    max-width: 800px; /* Povećano sa 600px na 800px */
+    background: white;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Stilizacija labela */
+#create-event label {
+    display: block;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+/* Stilizacija input polja */
+#create-event input,
+#create-event textarea,
+#create-event select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* Dugme za kreiranje eventa - minimalistički stil */
+#create-event .create-event-btn {
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    margin: 20px auto;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    background: transparent;
+    border: 2px solid black;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+}
+
+/* Hover efekat */
+#create-event .create-event-btn:hover {
+    background: black;
+    color: white;
+}
+
+/* Footer ostaje na dnu */
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+}
+
+
+/* EVENTS */
+/* EVENTS */
+#events {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+    gap: 20px; /* Razmak između evenata */
+    width: 100%;
+}
+
+#events .event {
+    width: 30%;
+    min-width: 280px;
+    max-width: 350px;
+    margin: 10px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.2); /* Dodato da svi eventi imaju tanku ivicu */
+}
+
+/* Stilizacija dugmadi za sve evente */
+.event-btn {
+    background: transparent;
+    border: 2px solid black;
+    color: black;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* Hover efekat za dugme */
+.event-btn:hover {
+    background: black;
+    color: white;
+}
+
+/* Prilagodba kartica da imaju konzistentan izgled */
+.event {
+    border: 1px solid rgba(0, 0, 0, 0.2); /* Tanak okvir za sve evente */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Lagana sjenka */
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Stilizacija slika unutar event kartica */
+.event img {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Responsivne prilagodbe */
+@media screen and (max-width: 1000px) {
+    #events {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #events .event {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #events .event {
+        width: 100%;
+    }
+}
+
+/*event-details*/
+/* EVENT DETAILS SECTION */
+/* EVENT DETAILS SECTION */
+#event-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+/* Kontejner za detalje eventa */
+#event-details .event-container {
+    width: 80%;
+    max-width: 700px;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Stilizacija naslova */
+#event-details h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Stilizacija podnaslova */
+#event-details p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#event-details .event-image {
+    width: 70%; /* Smanjena širina na 70% */
+    max-width: 500px; /* Ograničenje maksimalne širine */
+    height: auto; /* Održava proporcije slike */
+    border-radius: 10px; /* Zaobljene ivice */
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: block; /* Centriranje */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Dugme - minimalistički stil */
+#event-details .register-btn {
+    display: inline-block;
+    background: transparent;
+    color: black;
+    border: 2px solid black;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover efekat */
+#event-details .register-btn:hover {
+    background: black;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Responsivne prilagodbe */
+@media screen and (max-width: 768px) {
+    #event-details .event-container {
+        width: 95%;
+    }
+}
+
+
+
+/* FOOTER */
+footer {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    text-align: center;
+    background: #111;
+    color: white;
+    padding: 2px 0; /* MAKSIMALNO SMANJEN PADDING */
+    font-size: 12px; /* JOŠ MANJI FONT */
+    position: relative;
+    bottom: 0;
+    left: 0;
+}
+
+footer p {
+    padding: 2px;
+    margin: 0; /* UKLONJEN SAV SUVIŠAN PRAZAN PROSTOR */
+}
+
+address {
+    padding: 2px 5px;
+    font-size: 11px; /* JOŠ MANJI FONT */
+}
+
+
+
+/* DODATNA OPTIMIZACIJA ZA MALE EKRANE */
+@media screen and (max-width: 768px) {
+    footer {
+        padding: 1px 0; /* EKSTREMNO TANAK NA MALIM EKRANIMA */
+        font-size: 10px;
+    }
+
+    address {
+        font-size: 10px;
+        padding: 1px;
+    }
+}
+
+
+
+
+/* Responsive podešavanja */
+@media screen and (max-width: 1000px) {
+    body > section {
+        padding: 30px 20px;
+    }
+
+    #services .card {
+        width: 45%;
+    }
+
+    #gallery img {
+        width: 45%;
+    }
+
+    #about {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #about .text, #about img {
+        width: 90%;
+    }
+
+    #events .event {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    main {
+        width: 95%;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    #services .card {
+        width: 90%;
+    }
+
+    #gallery img {
+        width: 90%;
+    }
+
+    #about .text, #about img {
+        width: 100%;
+    }
+
+    #events .event {
+        width: 100%;
+    }
+}

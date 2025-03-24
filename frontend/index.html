@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://html5-templates.com/" />
+    <title>Event Management System</title>
+    <meta name="description" content="Event management system with SPA navigation.">
+    
+
+
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/spapp.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/vendor/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="./assets/vendor/glightbox.min.css">
+
+
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/jquery.spapp.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/vendor/bootstrap.min.js"></script>
+    <script src="./assets/vendor/glightbox.min.js"></script>
+    
+</head>
+
+<body>
+    <header>
+        <nav role="navigation" class="navbar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#settings">Settings</a></li>
+                <li><a href="#create-event">Create Event</a></li>
+                <li><a href="#login">Login</a></li>
+                <li><a href="#register">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+    <section id="pageContent">
+        <main id="spapp" role="main">
+            <section id="home" data-load="home.html"></section>
+            <section id="services" data-load="services.html"></section>
+            <section id="about" data-load="about.html"></section>
+            <section id="gallery" data-load="gallery.html"></section>
+            <section id="contact" data-load="contact.html"></section>
+            <section id="events" data-load="events.html"></section>
+            <section id="event-details" data-load="event-details.html"></section>
+            <section id="dashboard" data-load="dashboard.html"></section>
+            <section id="profile" data-load="profile.html"></section>
+            <section id="settings" data-load="settings.html"></section>
+            <section id="create-event" data-load="create-event.html"></section>
+            <section id="login" data-load="login.html"></section>
+            <section id="register" data-load="register.html"></section>
+            <section id="manage-users" data-load="manage-users.html"></section>
+            <section id="my-reservations" data-load="my-reservations.html"></section>
+        </main>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Event Management System</p>
+        <address>
+            Contact: <a href="mailto:me@example.com">Mail me</a>
+        </address>
+    </footer>
+
+    <script>
+        var app = $.spapp({
+            defaultView: "home",  // Podesili smo HOME kao početni prikaz
+            templateDir: "./views/"
+        });
+
+        app.run();
+    </script>
+</body>
+
+</html>
