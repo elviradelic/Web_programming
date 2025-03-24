@@ -1,0 +1,338 @@
+/*!
+*--------------
+* Template Name: EventPlanner - v1.0
+* Template URL: dycodes.github.com/EventPlanner
+* Author: Yusuf Daudu - dyCodes
+* Author URL: github.com/dycodes
+* License: https://dycodes.github.com/EventPlanner/license
+*---------------------------------
+*/
+/*! Globalni reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*! BODY */
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/*! HEADER */
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #111;
+  padding: 15px 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/*! NAVIGATION */
+header nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+header nav ul li {
+  margin: 0 10px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: white; /* Bele boje linkovi */
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 15px; /* Uklanjamo background, ali zadržavamo padding za dobar spacing */
+  transition: color 0.3s ease-in-out;
+  border-radius: 0; /* Uklanjamo zaobljenje */
+  background: none; /* Uklanjamo background */
+  border: none; /* Uklanjamo border */
+}
+
+header nav ul li a:hover {
+  color: #ccccc7; /* Žuta boja samo za tekst prilikom hover efekta */
+  background: none; /* Osiguravamo da nema nikakve pozadine */
+}
+
+/*! MAIN */
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
+  margin: 100px auto 0 auto; /* Omogućava prostor ispod headera */
+  padding: 20px;
+}
+
+/*! HERO SECTION */
+#hero {
+  width: 100%;
+  height: 100vh; /* Puna visina ekrana */
+  background-image: url('../img/hero-image.jpg'); /* ISPRAVLJENA PUTANJA */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden; /* Osigurava da sve ostane u okviru */
+}
+
+/* Overlay efekat za tamniju sliku */
+#hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* OBRIŠI IMG IZ HTML-A DA NE KONFLIKTUJE SA BACKGROUND-IMAGE */
+#hero img {
+  display: none; /* Isključuje <img> jer koristimo background-image */
+}
+
+#hero .content {
+  background: rgba(0, 0, 0, 0.7); /* Malo tamnija providna pozadina */
+  padding: 50px 40px; /* Više paddinga za veći box */
+  border-radius: 12px;
+  width: 85%;
+  max-width: 750px; /* Širi box */
+  position: relative;
+  z-index: 2;
+  color: white;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6); /* Jači sjaj za bolji izgled */
+  text-align: center;
+}
+
+/* Poboljšanja za tekst */
+#hero .content h1 {
+  font-size: 2.8rem; /* Veći naslov */
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#hero .content h2 {
+  font-size: 1.1rem; /* Manji podnaslov */
+  font-weight: 300;
+  margin-bottom: 25px;
+}
+
+/* Dugme */
+#hero .content a {
+  display: inline-block;
+  background-color: transparent; /* Transparentna pozadina */
+  color: white; /* Bijeli tekst */
+  font-size: 18px;
+  font-weight: normal; /* Uklanja bold */
+  font-family: 'Poppins', sans-serif;
+  padding: 12px 28px;
+  border: 2px solid white; /* Bijeli obrub */
+  border-radius: 3px; /* Blago zaobljeni rubovi */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  letter-spacing: 0.7px;
+}
+
+
+#hero .content a:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Lagani hover efekat */
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Responsive poboljšanja */
+@media (max-width: 768px) {
+  #hero .content {
+    width: 90%;
+    padding: 20px;
+  }
+}
+
+
+
+/*! SERVICES */
+#services {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+#services .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Naslov i opis */
+#services .services-header {
+  text-align: center;
+  margin-bottom: 20px; /* Povećan razmak između naslova i paragrafa */
+}
+
+#services .services-header h2 {
+  font-size: 38px;
+  font-weight: normal; /* Uklonjen bold */
+  color: #000; /* Crna boja */
+  margin-bottom: 10px; /* Blagi razmak između naslova i paragrafa */
+}
+
+#services .services-header p {
+  font-size: 18px; /* Blago povećana veličina slova */
+  color: #333; /* Tamno siva za bolju vidljivost */
+  margin-top: 0; /* Osigurava da nema dodatnog razmaka iznad paragrafa */
+}
+
+/* Raspored kartica */
+#services .services-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  position: relative;
+}
+
+/* Dizajn kartica */
+#services .card {
+  width: 38%;
+  min-width: 350px;
+  max-width: 500px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  background: white;
+  border-radius: 10px;
+  text-align: center;
+  padding: 25px;
+  transition: all 0.3s ease-in-out;
+
+  /* Još malo spuštanje kartica */
+  position: relative;
+  top: -50px; /* Smanjeno sa -60px na -50px */
+}
+
+#services .card:hover {
+  transform: translateY(-5px);
+}
+
+/* Slike unutar kartica */
+#services .card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  border-radius: 10px;
+}
+
+#services .card img:hover {
+  transform: scale(1.05);
+}
+
+/* Naslovi i opisi kartica */
+#services .card h3 {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 15px 0 10px;
+}
+
+#services .card p {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Responsive podešavanja */
+@media screen and (max-width: 1000px) {
+  #services .card {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #services .card {
+    width: 90%;
+  }
+}
+
+
+/*! FOOTER */
+footer {
+  width: 100%;
+  background: #111;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 14px;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+}
+
+footer a {
+  color: #e7d34a;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+/*! RESPONSIVE */
+@media (max-width: 768px) {
+  header nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header nav ul li {
+    margin: 5px 0;
+  }
+
+  main {
+    width: 95%;
+    padding: 10px;
+  }
+
+  #hero .content {
+    width: 90%;
+  }
+
+  #services {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #services .card {
+    width: 90%;
+  }
+
+  footer {
+    font-size: 12px;
+    padding: 15px 10px;
+  }
+}
