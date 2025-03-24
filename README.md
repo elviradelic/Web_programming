@@ -49,7 +49,7 @@ As part of the database planning, 5 main entities with their mutual relationship
 
 -----------------------------------------------------
 
-Live Demo (Deployed Link)
+Live Demo (https://elviradelic.github.io/Web_programming/)
 🔗 []
 
 Tehnologije koje su korišćene
