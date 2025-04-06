@@ -84,14 +84,7 @@ Relationships between entities are properly structured to support application fu
 
 --------------------------------------------------------------------------------------------------
 
-Technologies Used
 
--Frontend: HTML, CSS (Bootstrap), JavaScript (jQuery, jQuery SPApp)
 
--Backend: PHP (FlightPHP), MySQL, PHP PDO
 
--REST API: Planned in the next milestone (OpenAPI documentation)
 
--Authentication: JWT (planned for Milestone 4)
-
--Tools: DBeaver, Visual Studio Code, Git, GitHub
