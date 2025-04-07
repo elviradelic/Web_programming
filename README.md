@@ -1,62 +1,90 @@
-# Web_programming
-
 Event Management System
+Web Programming Course Project
 
-Event Management System is a web application that allows users to create, organize and participate in various events. This application was developed as part of the Web Programming course, and the implementation takes place through several phases (milestones).
+The Event Management System is a web application that allows users to create, organize, and participate in various events. The project is developed as part of the Web Programming course and is divided into five clearly defined phases (milestones).
 
-Currently implemented functionalities (Milestone 1):
-✅ Single Page Application (SPA) – Navigation takes place without refreshing the page, using jQuery SPApp.
-✅ Project structure – Separated frontend and backend directories in accordance with SPA principles.
-✅ Frontend design – All necessary static files and pages created according to the EventPlanner template.
-✅ Navigation and UI design – Bootstrap and custom CSS for a modern and responsive design.
-✅ Pages implemented:
+-----------------------------------------------------------------------------------------
 
-Home
+Implemented Features
 
-Gallery
+Milestone 1 – Frontend and SPA Setup
 
-Contact
+-Implemented Single Page Application (SPA) using jQuery SPApp
+-Established project structure with separate frontend and backend folders
+-Designed the static frontend using HTML, CSS, and JS based on the EventPlanner template
+-Navigation between pages is handled without reloading, fully compliant with SPA principles
+-Responsive and modern design achieved with Bootstrap and custom CSS
 
-Events
+Implemented pages:
 
-Event Details
+-Home
 
-Login & Register
+-Gallery
 
-Profile
+-Contact
 
-Settings
+-Events
 
-Create Event
+-Event Details
 
----------------------------------------------------
+-Login & Register
 
-As part of the database planning, 5 main entities with their mutual relationships were defined:
+-Profile
 
-1️⃣ Users – Contains user data (name, email, password, role)
+-Settings
 
-2️⃣ Events – Event details (name, description, location, date, category, organizer)
+-Create Event
 
-3️⃣ Categories – Event categories (Conference, Festival, Networking, Weddings...)
+------------------------------------------------------------------------------------------------
 
-4️⃣ Registrations – User registrations for events (which user is going to which event)
+Milestone 2 – Backend Setup and DAO Layer
 
-5️⃣ Messages – User messages from the contact form
+-Created a relational MySQL database with at least five entities
 
-📌 ER Diagram:
+-Implemented a DAO layer using PHP and PDO for database interaction
 
-![alt text](<ER_Diagram - Database.png>)
+Developed the following DAO classes:
+-UserDao
 
------------------------------------------------------
+-CategoryDao
 
-Live Demo (https://elviradelic.github.io/Web_programming/)
-🔗 []
+-EventDao
 
-Tehnologije koje su korišćene
-Frontend: HTML, CSS (Bootstrap), JavaScript (jQuery, jQuery SPApp)
+-ReservationDao
 
-Backend (u narednim fazama): PHP (FlightPHP), MySQL, PHP PDO, JWT autentifikacija
+-FeedbackDao
 
-Deployment: GitHub Pages / Netlify (za frontend), Heroku / DigitalOcean (za backend)
+Each DAO includes full CRUD functionality:
+-Create (POST)
 
-Napomena: Frontend nije završen, biti će još dorade na njemu definitivno
+-Read (GET)
+
+-Update (PUT)
+
+-Delete (DELETE)
+
+Database schema was successfully created and verified using DBeaver.
+
+-------------------------------------------------------------------------------------------------
+
+Database and ER Diagram
+
+The database contains the following core entities:
+-Users – Stores user data (full name, email, password, role)
+
+-Events – Event details (name, description, date, location, category)
+
+-Categories – Event categories (e.g. Conference, Festival, Wedding)
+
+-Reservations – Event registrations by users
+
+-Feedback – Contact form messages and feedback
+
+Relationships between entities are properly structured to support application functionality.
+
+--------------------------------------------------------------------------------------------------
+
+
+
+
+
