@@ -8,19 +8,19 @@ class FeedbackDao {
         $this->conn = Database::getInstance()->getConnection();
     }
 
-    public function getAll() {
+    public function getAllFeedbacks() {
         $stmt = $this->conn->prepare("SELECT * FROM feedback");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getById($id) {
+    public function getFeedbackById($id) {
         $stmt = $this->conn->prepare("SELECT * FROM feedback WHERE id = ?");
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function insert($data) {
+    public function createFeedback($data) {
         $stmt = $this->conn->prepare("INSERT INTO feedback (user_id, event_id, message, rating, created_at) VALUES (?, ?, ?, ?, ?)");
         return $stmt->execute([
             $data['user_id'],
@@ -31,7 +31,7 @@ class FeedbackDao {
         ]);
     }
 
-    public function update($id, $data) {
+    public function updateFeedback($id, $data) {
         $stmt = $this->conn->prepare("UPDATE feedback SET user_id = ?, event_id = ?, message = ?, rating = ?, created_at = ? WHERE id = ?");
         return $stmt->execute([
             $data['user_id'],
@@ -43,8 +43,9 @@ class FeedbackDao {
         ]);
     }
 
-    public function delete($id) {
+    public function deleteFeedback($id) {
         $stmt = $this->conn->prepare("DELETE FROM feedback WHERE id = ?");
         return $stmt->execute([$id]);
     }
 }
+

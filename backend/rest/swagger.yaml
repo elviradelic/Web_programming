@@ -1,0 +1,407 @@
+openapi: 3.0.0
+info:
+  title: Event Management API
+  version: 1.0.0
+  description: API za upravljanje događajima, korisnicima, rezervacijama i feedbackom.
+servers:
+  - url: http://localhost/Web_programming/backend/rest
+
+paths:
+  /users:
+    get:
+      summary: Get all users
+      responses:
+        '200':
+          description: List of users
+    post:
+      summary: Create a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                full_name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '201':
+          description: User created
+
+  /users/{id}:
+    get:
+      summary: Get user by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: User found
+        '404':
+          description: User not found
+    put:
+      summary: Update user by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                full_name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: User updated
+    delete:
+      summary: Delete user by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: User deleted
+
+  /events:
+    get:
+      summary: Get all events
+      responses:
+        '200':
+          description: List of events
+    post:
+      summary: Create a new event
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                date:
+                  type: string
+                  format: date
+                location:
+                  type: string
+                category_id:
+                  type: integer
+                created_by:
+                  type: integer
+                max_participants:
+                  type: integer
+      responses:
+        '201':
+          description: Event created
+
+  /events/{id}:
+    get:
+      summary: Get event by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Event found
+        '404':
+          description: Event not found
+    put:
+      summary: Update event by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                date:
+                  type: string
+                  format: date
+                location:
+                  type: string
+                category_id:
+                  type: integer
+                max_participants:
+                  type: integer
+      responses:
+        '200':
+          description: Event updated
+    delete:
+      summary: Delete event by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Event deleted
+
+  /reservations:
+    get:
+      summary: Get all reservations
+      responses:
+        '200':
+          description: List of reservations
+    post:
+      summary: Create a new reservation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                event_id:
+                  type: integer
+                status:
+                  type: string
+                reservation_date:
+                  type: string
+                  format: date
+      responses:
+        '201':
+          description: Reservation created
+        '400':
+          description: Invalid input or business rule violation
+
+  /reservations/{id}:
+    get:
+      summary: Get reservation by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Reservation found
+        '404':
+          description: Reservation not found
+    put:
+      summary: Update reservation by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                event_id:
+                  type: integer
+                status:
+                  type: string
+                reservation_date:
+                  type: string
+                  format: date
+      responses:
+        '200':
+          description: Reservation updated
+    delete:
+      summary: Delete reservation by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Reservation deleted
+
+  /feedback:
+    get:
+      summary: Get all feedback
+      responses:
+        '200':
+          description: List of feedback
+    post:
+      summary: Create new feedback
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                event_id:
+                  type: integer
+                message:
+                  type: string
+                rating:
+                  type: integer
+                created_at:
+                  type: string
+                  format: date-time
+      responses:
+        '201':
+          description: Feedback created
+        '400':
+          description: Validation failed or user did not attend event
+
+  /feedback/{id}:
+    get:
+      summary: Get feedback by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Feedback found
+        '404':
+          description: Feedback not found
+    put:
+      summary: Update feedback by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                rating:
+                  type: integer
+                created_at:
+                  type: string
+                  format: date-time
+      responses:
+        '200':
+          description: Feedback updated
+    delete:
+      summary: Delete feedback by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Feedback deleted
+
+  /categories:
+    get:
+      summary: Get all categories
+      responses:
+        '200':
+          description: List of categories
+    post:
+      summary: Create a new category
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '201':
+          description: Category created
+
+  /categories/{id}:
+    get:
+      summary: Get category by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Category found
+        '404':
+          description: Category not found
+    put:
+      summary: Update category by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: Category updated
+    delete:
+      summary: Delete category by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Category deleted
