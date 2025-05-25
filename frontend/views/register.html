@@ -1,18 +1,18 @@
 <div class="container">
     <h1>Register</h1>
     <p>Create a new account to join and manage events.</p>
-    <form id="register-form"> <!-- Dodao sam ID za formu -->
+    <form id="register-form">
         <div class="form-group">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" class="form-control" placeholder="Enter your full name">
+            <label for="register-name">Full Name</label>
+            <input type="text" id="register-name" class="form-control" placeholder="Enter your full name" required>
         </div>
         <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" class="form-control" placeholder="Enter your email">
+            <label for="register-email">Email Address</label>
+            <input type="email" id="register-email" class="form-control" placeholder="Enter your email" required>
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" class="form-control" placeholder="Create a password">
+            <label for="register-password">Password</label>
+            <input type="password" id="register-password" class="form-control" placeholder="Create a password" required>
         </div>
         <div class="form-group">
             <label for="confirm-password">Confirm Password</label>
@@ -21,6 +21,5 @@
         <button type="submit" class="register-btn">Register</button>
 
         <p class="register-text">Already have an account? <a href="#login">Login here</a>.</p>
-
     </form>
 </div>

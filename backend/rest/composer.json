@@ -1,5 +1,15 @@
 {
-    "require": {
-        "mikecao/flight": "^3.15"
+  "name": "lenovo/rest",
+  "type": "project",
+  "authors": [
+    {
+      "name": "elvira",
+      "email": "elvira.delic@stu.ibu.edu.ba"
     }
+  ],
+  "require": {
+    "flightphp/core": "^3.15",
+    "zircote/swagger-php": "^3.3",
+    "firebase/php-jwt": "^6.11"
+  }
 }
