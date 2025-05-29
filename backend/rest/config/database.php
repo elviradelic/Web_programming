@@ -1,21 +1,24 @@
 <?php
 
-class Database {
-    private $host = "localhost";
-    private $db_name = "event_management";
-    private $username = "root";
-    private $password = "";
-    private $conn;
+require_once __DIR__ . '/config.php';
 
+class Database {
     private static $instance = null;
+    private $connection;
 
     private function __construct() {
+        $host = Config::DB_HOST();
+        $port = Config::DB_PORT();
+        $db_name = Config::DB_NAME();
+        $username = Config::DB_USER();
+        $password = Config::DB_PASSWORD();
+
         try {
-            $dsn = "mysql:host=" . $this->host . ";dbname=" . $this->db_name . ";charset=utf8mb4";
-            $this->conn = new PDO($dsn, $this->username, $this->password);
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch(PDOException $exception) {
-            echo "Database connection error: " . $exception->getMessage();
+            $dsn = "mysql:host=$host;port=$port;dbname=$db_name;charset=utf8mb4";
+            $this->connection = new PDO($dsn, $username, $password);
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            die("Database connection failed: " . $e->getMessage());
         }
     }
 
@@ -27,6 +30,6 @@ class Database {
     }
 
     public function getConnection() {
-        return $this->conn;
+        return $this->connection;
     }
 }

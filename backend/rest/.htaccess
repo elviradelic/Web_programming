@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /Web_programming/backend/rest/
+RewriteBase /ElviraDelic/Web_programming/backend/rest/
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>Swagger UI</title>
-  <link rel="stylesheet" type="text/css" href="../static/swagger-ui/swagger-ui.css" />
+  <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css">
 </head>
 <body>
   <div id="swagger-ui"></div>
-
-  <script src="../static/swagger-ui/swagger-ui-bundle.js"></script>
-  <script src="../static/swagger-ui/swagger-ui-standalone-preset.js"></script>
+  <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"></script>
+  <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"></script>
   <script>
-    window.onload = () => {
+    window.onload = function () {
       SwaggerUIBundle({
-        url: "/Web_programming/backend/rest/swagger.yaml",  // putanja do YAML fajla
+        url: "swagger.php",
         dom_id: '#swagger-ui',
+        deepLinking: true,
         presets: [
           SwaggerUIBundle.presets.apis,
           SwaggerUIStandalonePreset

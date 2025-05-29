@@ -1,32 +1,14 @@
 <?php
 
+require_once __DIR__ . '/BaseService.php';
 require_once __DIR__ . '/../dao/EventDao.php';
 
-class EventService {
-    private $eventDao;
-
+class EventService extends BaseService {
     public function __construct() {
-        $this->eventDao = new EventDao();
+        parent::__construct(new EventDao());
     }
 
-    public function getAllEvents() {
-        return $this->eventDao->getAllEvents();
-    }
-
-    public function getEventById($id) {
-        if (!is_numeric($id) || $id <= 0) {
-            throw new Exception("Invalid event ID.");
-        }
-
-        $event = $this->eventDao->getEventById($id);
-        if (!$event) {
-            throw new Exception("Event not found.");
-        }
-
-        return $event;
-    }
-
-    public function createEvent($data) {
+    public function add($data) {
         if (empty($data['name']) || strlen($data['name']) < 3) {
             throw new Exception("Event name must be at least 3 characters long.");
         }
@@ -51,35 +33,18 @@ class EventService {
             throw new Exception("Valid organizer ID is required.");
         }
 
-        return $this->eventDao->createEvent($data);
+        return parent::add($data); 
     }
 
-    public function updateEvent($id, $data) {
+    public function update($id, $data) {
         if (!is_numeric($id) || $id <= 0) {
             throw new Exception("Invalid event ID.");
-        }
-
-        if (!$this->eventDao->getEventById($id)) {
-            throw new Exception("Event not found.");
         }
 
         if (isset($data['date']) && !strtotime($data['date'])) {
             throw new Exception("Invalid date format.");
         }
 
-        return $this->eventDao->updateEvent($id, $data);
-    }
-
-    public function deleteEvent($id) {
-        if (!is_numeric($id) || $id <= 0) {
-            throw new Exception("Invalid event ID.");
-        }
-
-        if (!$this->eventDao->getEventById($id)) {
-            throw new Exception("Event not found.");
-        }
-
-        return $this->eventDao->deleteEvent($id);
+        return parent::update($id, $data);
     }
 }
-

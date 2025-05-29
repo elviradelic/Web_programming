@@ -8,12 +8,9 @@
     <link rel="canonical" href="https://html5-templates.com/" />
     <title>Event Management System</title>
     <meta name="description" content="Event management system with SPA navigation.">
-    
-
 
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-
 
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/spapp.css">
@@ -22,13 +19,11 @@
     <link rel="stylesheet" href="./assets/vendor/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="./assets/vendor/glightbox.min.css">
 
-
     <script src="./assets/js/jquery.min.js"></script>
     <script src="./assets/js/jquery.spapp.min.js"></script>
     <script src="./assets/js/script.js"></script>
     <script src="./assets/vendor/bootstrap.min.js"></script>
     <script src="./assets/vendor/glightbox.min.js"></script>
-    
 </head>
 
 <body>
@@ -45,12 +40,15 @@
                 <li><a href="#profile">Profile</a></li>
                 <li><a href="#settings">Settings</a></li>
                 <li><a href="#create-event">Create Event</a></li>
-                <li><a href="#login">Login</a></li>
-                <li><a href="#register">Register</a></li>
+
+                
+                <li id="admin-link" style="display: none;"><a href="#manage-users">Admin Panel</a></li>
+                <li><a href="#" id="logout-btn" style="display: none;">Logout</a></li>
+                <li id="login-link"><a href="#login">Login</a></li>
+                <li id="register-link"><a href="#register">Register</a></li>
             </ul>
         </nav>
     </header>
-    
 
     <section id="pageContent">
         <main id="spapp" role="main">
@@ -80,8 +78,31 @@
     </footer>
 
     <script>
+        // Dodatna kontrola prikaza dugmadi izvan SPApp-a
+        $(document).ready(function () {
+            const token = localStorage.getItem('token');
+            const role = localStorage.getItem('role');
+
+            if (token && role) {
+                $('#logout-btn').show();
+                $('#login-link').hide();
+                $('#register-link').hide();
+
+                if (role === 'admin') {
+                    $('#admin-link').show();
+                } else {
+                    $('#admin-link').hide();
+                }
+            } else {
+                $('#logout-btn').hide();
+                $('#admin-link').hide();
+                $('#login-link').show();
+                $('#register-link').show();
+            }
+        });
+
         var app = $.spapp({
-            defaultView: "home",  // Podesili smo HOME kao početni prikaz
+            defaultView: "home",
             templateDir: "./views/"
         });
 

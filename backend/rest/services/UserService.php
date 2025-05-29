@@ -1,32 +1,15 @@
 <?php
 
+require_once __DIR__ . '/BaseService.php';
 require_once __DIR__ . '/../dao/UserDao.php';
 
-class UserService {
-    private $userDao;
+class UserService extends BaseService {
 
     public function __construct() {
-        $this->userDao = new UserDao();
+        parent::__construct(new UserDao());
     }
 
-    public function getAllUsers() {
-        return $this->userDao->getAllUsers();
-    }
-
-    public function getUserById($id) {
-        if (!is_numeric($id) || $id <= 0) {
-            throw new Exception("Invalid user ID.");
-        }
-
-        $user = $this->userDao->getUserById($id);
-        if (!$user) {
-            throw new Exception("User not found.");
-        }
-
-        return $user;
-    }
-
-    public function createUser($data) {
+    public function add($data) {
         if (empty($data['full_name']) || strlen($data['full_name']) < 2) {
             throw new Exception("Full name must be at least 2 characters long.");
         }
@@ -39,15 +22,17 @@ class UserService {
             throw new Exception("Password must be at least 6 characters long.");
         }
 
-        return $this->userDao->createUser($data);
+        return parent::add($data);
     }
 
-    public function updateUser($id, $data) {
+    public function update($id, $data) {
         if (!is_numeric($id) || $id <= 0) {
             throw new Exception("Invalid user ID.");
         }
 
-        if (!$this->userDao->getUserById($id)) {
+        $user = $this->dao->getById($id); 
+
+        if (!$user) {
             throw new Exception("User not found.");
         }
 
@@ -59,18 +44,6 @@ class UserService {
             throw new Exception("Password must be at least 6 characters long.");
         }
 
-        return $this->userDao->updateUser($id, $data);
-    }
-
-    public function deleteUser($id) {
-        if (!is_numeric($id) || $id <= 0) {
-            throw new Exception("Invalid user ID.");
-        }
-
-        if (!$this->userDao->getUserById($id)) {
-            throw new Exception("User not found.");
-        }
-
-        return $this->userDao->deleteUser($id);
+        return parent::update($id, $data);
     }
 }
